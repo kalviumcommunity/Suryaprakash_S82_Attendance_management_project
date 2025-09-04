@@ -1,23 +1,20 @@
 package com.school;
 
-public class Student {
-    private static int nextId = 1;
-    private String name;
-    private int id;
+public class Student extends Person {
+    private String gradeLevel;
 
-    public Student(String name) {
-        this.name = name;
-        this.id = nextId++;
-    }
-    public int getStudentId() {
-        return id;
+    public Student(String name, String gradeLevel) {
+        super(name);
+        this.gradeLevel = gradeLevel;
     }
 
-    public String getName() {
-        return name;
+    public String getGradeLevel() {
+        return gradeLevel;
     }
 
+    @Override
     public void displayDetails() {
-        System.out.println("Student: " + getName() + ", ID: " + getStudentId());
+        super.displayDetails();
+        System.out.println("Role: Student, Grade Level: " + gradeLevel);
     }
 }
