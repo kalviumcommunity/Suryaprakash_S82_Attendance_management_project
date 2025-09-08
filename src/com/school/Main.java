@@ -32,7 +32,7 @@ public class Main {
         c1.displayDetails();
         c2.displayDetails();
 
-        // Attendance Records (use student.getId())
+        // Attendance Records
         List<AttendanceRecord> attendanceLog = new ArrayList<>();
         attendanceLog.add(new AttendanceRecord(s1.getId(), c1.getCourseId(), "Present"));
         attendanceLog.add(new AttendanceRecord(s2.getId(), c2.getCourseId(), "Absent"));
@@ -43,6 +43,15 @@ public class Main {
         for (AttendanceRecord record : attendanceLog) {
             record.displayRecord();
         }
+
+        // ✅ Save Data to files (this must be INSIDE main method)
+        FileStorageService storage = new FileStorageService();
+        List<Student> students = Arrays.asList(s1, s2);
+        List<Course> courses = Arrays.asList(c1, c2);
+
+        storage.saveData(students, "students.txt");
+        storage.saveData(courses, "courses.txt");
+        storage.saveData(attendanceLog, "attendance_log.txt");
 
         sc.close();
     }
